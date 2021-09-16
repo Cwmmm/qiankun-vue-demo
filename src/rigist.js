@@ -1,6 +1,10 @@
 import { registerMicroApps, start } from 'qiankun';
-import store from './store';
 
+
+
+
+
+import store from './store';
 const microApps = [
   {
     name: 'vueApp1',
