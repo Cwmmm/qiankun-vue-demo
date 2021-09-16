@@ -28,5 +28,5 @@ actions.getGlobalState = (key) => {
   // 无key，表示取全部
   return key ? initialState[key] : initialState;
 };
-
+Vue.prototype.$store = actions;
 export default actions;

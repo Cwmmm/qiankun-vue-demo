@@ -3,9 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-
-//注册子应用
-import "./rigist";
+import "./rigist"; //注册子应用
 
 Vue.use(ElementUI);
 
