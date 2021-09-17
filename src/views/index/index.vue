@@ -1,16 +1,11 @@
 <template>
   <div class="container">
     <div class="top_bar">
-      <el-menu
-        :default-active="activeIndex"
-        mode="horizontal"
-        @select="handleSelect"
-      >
-        <el-menu-item index="/">首页</el-menu-item>
-        <el-menu-item index="/app1">子应用1</el-menu-item>
-        <el-menu-item index="/app2">子应用2</el-menu-item>
-      </el-menu>
-      <div class="user_info"></div>
+      <span class="nav_link" @click="handleSelect('/')">首页</span>
+      <span class="nav_link" @click="handleSelect('/micro/app1')"
+        >子应用1
+      </span>
+      <div class="user_info">global.user:{{ userInfo.name }}</div>
     </div>
     <div class="left_menu">
       <el-menu
@@ -65,11 +60,17 @@ export default {
       activeIndex: '1',
     };
   },
+  computed: {
+    userInfo() {
+      return this.$store.getGlobalState('user');
+    },
+  },
   methods: {
     handleSelect(href) {
       this.$router.push(href);
     },
   },
+  created() {},
 };
 </script>
 <style>
@@ -91,6 +92,18 @@ html {
   left: 0;
   height: 61px;
   width: 100%;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user_info {
+  margin-left: auto;
+}
+.nav_link {
+  margin: 0 20px;
+  cursor: pointer;
 }
 .left_menu {
   position: fixed;

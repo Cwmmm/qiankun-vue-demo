@@ -9,6 +9,7 @@ let initialState = Vue.observable({
   user: {
     name: "unChangeName",
   },
+  leftMenu: {}
 });
 
 const actions = initGlobalState(initialState);

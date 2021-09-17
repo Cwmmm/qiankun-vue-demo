@@ -5,12 +5,7 @@ const microApps = [
   {
     name: "vueApp1",
     entry: "//localhost:3000",
-    activeRule: "#/app1",
-  },
-  {
-    name: "sub-react",
-    entry: "//localhost:3001",
-    activeRule: "#/app2",
+    activeRule: "#/micro/app1",
   },
 ];
 
@@ -26,5 +21,4 @@ const apps = microApps.map((item) => {
 });
 
 registerMicroApps(apps);
-
 start();
