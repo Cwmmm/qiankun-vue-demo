@@ -2,10 +2,11 @@
   <div class="container">
     <div class="top_bar">
       <span class="nav_link" @click="handleSelect('/')">首页</span>
-      <span class="nav_link" @click="handleSelect('/micro/app1')"
+      <span class="nav_link" @click="handleSelect('/subApp/app1')"
         >子应用1
       </span>
-      <div class="user_info">global.user:{{ userInfo.name }}</div>
+      <el-button @click="changeStore">点击更变userinfo</el-button>
+      <div class="user_info">global.user:{{ userInfo }}</div>
     </div>
     <div class="left_menu">
       <el-menu
@@ -48,7 +49,7 @@
       </el-menu>
     </div>
     <div class="wrap_rabbet">
-      <router-view></router-view>
+      <router-view> </router-view>
       <div id="sub_app"></div>
     </div>
   </div>
@@ -57,20 +58,31 @@
 export default {
   data() {
     return {
-      activeIndex: '1',
+      activeIndex: "1",
     };
   },
   computed: {
     userInfo() {
-      return this.$store.getGlobalState('user');
+      return this.$globalState;
+    },
+  },
+  watch: {
+    $globalState(val) {
+      console.log(val);
     },
   },
   methods: {
     handleSelect(href) {
       this.$router.push(href);
     },
+    changeStore() {
+      this.$globalState.userInfo.name = "基座更变";
+      this.$globalState.hello = "11";
+    },
   },
-  created() {},
+  created() {
+    console.log(this.$globalState);
+  },
 };
 </script>
 <style>

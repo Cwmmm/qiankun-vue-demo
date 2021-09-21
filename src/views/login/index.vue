@@ -16,8 +16,8 @@ export default {
   data() {
     return {
       userInfo: {
-        name: '',
-        psd: '',
+        name: "",
+        psd: "",
       },
     };
   },

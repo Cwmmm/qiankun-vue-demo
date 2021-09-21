@@ -1,12 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import index from '@/views/index/index'
-import home from '@/views/home'
-import login from '@/views/login/index'
-import error from '@/views/404'
-import micro from './micro'
+import index from "@/views/index/index";
+import home from "@/views/home";
+import login from "@/views/login/index";
+import error from "@/views/404";
+import subApp from "./subApp";
 Vue.use(VueRouter);
-console.log(micro)
 const routes = [
   {
     path: "/",
@@ -15,16 +14,15 @@ const routes = [
     redirect: "/home",
     children: [
       {
-        path: 'home',
-        component: home
+        path: "home",
+        component: home,
       },
       {
-        path: 'micro',
-        name: 'micro',
-        children: micro
+        path: "subApp",
+        name: "subApp",
+        children: subApp,
       },
-
-    ]
+    ],
   },
   {
     path: "/login",
@@ -44,11 +42,9 @@ const router = new VueRouter({
   routes,
 });
 
-
 router.beforeEach((to, from, next) => {
-  console.log(to)
-  next()
+  next();
   //读取全局状态判断是否登录
-})
+});
 
 export default router;
